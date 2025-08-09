@@ -25,5 +25,4 @@ Threat Intelligence: IOC extraction, C2 domain blocking, hash verification
 Web Development: HTML, CSS, JavaScript (for the simulation webpage)
 
 
-
-## 📂 Project Structure
+📂Webpage: file:///C:/Users/USER%201/OneDrive/Desktop/BlackByte%20Ransomware%20Simulation.html
