@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BlackByte Ransomware Simulation - Incident Response</title>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, sans-serif;
+        background-color: #f9f9fb;
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+    }
+    header {
+        background: linear-gradient(to right, #3b82f6, #1e3c72);
+        color: white;
+        text-align: center;
+        padding: 30px 20px;
+    }
+    header h1 {
+        margin: 0;
+        font-size: 2.2em;
+    }
+    header p {
+        font-size: 1.1em;
+        opacity: 0.9;
+    }
+    nav {
+        background: #ffffff;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 10px;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
+    nav button {
+        background: #3b82f6;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.95em;
+        transition: background 0.3s ease;
+    }
+    nav button:hover {
+        background: #2563eb;
+    }
+    section {
+        max-width: 1000px;
+        margin: auto;
+        padding: 25px;
+        background: white;
+        margin-top: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        overflow: hidden;
+    }
+    h2 {
+        color: #1e3c72;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 5px;
+    }
+    h3 {
+        color: #3b82f6;
+        margin-top: 15px;
+    }
+    ul {
+        margin: 10px 0 10px 20px;
+    }
+    img.icon {
+        width: 120px;
+        float: right;
+        margin-left: 15px;
+        border-radius: 8px;
+    }
+    .split {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    .split div {
+        flex: 1;
+        min-width: 280px;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+        font-size: 0.95em;
+    }
+    th {
+        background-color: #f2f2f2;
+        color: #333;
+    }
+    footer {
+        text-align: center;
+        padding: 15px;
+        font-size: 0.9em;
+        background: #eee;
+        margin-top: 30px;
+    }
+</style>
+<script>
+    function scrollToSection(id) {
+        document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+</script>
+</head>
+<body>
+
+<header>
+    <h1>BlackByte Ransomware Incident Response</h1>
+    <p>Advanced Simulation & Documentation for Cybersecurity Training</p>
+</header>
+
+<nav>
+    <button onclick="scrollToSection('overview')">Overview</button>
+    <button onclick="scrollToSection('timeline')">Timeline</button>
+    <button onclick="scrollToSection('attack')">Attack Steps</button>
+    <button onclick="scrollToSection('detection')">Detection</button>
+    <button onclick="scrollToSection('ioc')">IOCs</button>
+    <button onclick="scrollToSection('response')">Response</button>
+    <button onclick="scrollToSection('summary')">Summary</button>
+</nav>
+
+<section id="overview">
+    <h2>1. Overview</h2>
+    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Cybersecurity Overview" class="icon">
+    <p>
+        This report outlines a simulated <strong>BlackByte Ransomware</strong> attack and the 
+        corresponding incident response actions. The exercise replicates a targeted intrusion 
+        against a corporate environment, aimed at assessing detection, response, and recovery 
+        readiness.
+    </p>
+    <p>
+        BlackByte is a ransomware family known for double extortion tactics: encrypting victim 
+        data and threatening public release unless payment is made in cryptocurrency. 
+        The simulation aligns with the <a href="https://attack.mitre.org/software/S1180/" target="_blank">MITRE ATT&CK framework</a> to ensure realistic 
+        adversary behavior modeling.
+    </p>
+    <p>
+        This drill focuses on:
+    </p>
+    <ul>
+        <li>Understanding initial infection vectors and malware execution flow.</li>
+        <li>Documenting key Indicators of Compromise (IOCs).</li>
+        <li>Practicing coordinated incident response processes.</li>
+        <li>Improving security posture through lessons learned.</li>
+    </ul>
+</section>
+
+<section id="timeline">
+    <h2>2. Incident Timeline</h2>
+    <img src="https://cdn-icons-png.flaticon.com/512/3079/3079043.png" alt="Timeline" class="icon">
+    <table>
+        <tr><th>Time</th><th>Event</th></tr>
+        <tr><td>08:45</td><td>Phishing email with malicious attachment received.</td></tr>
+        <tr><td>08:50</td><td>Obfuscated JavaScript executed, payload downloaded.</td></tr>
+        <tr><td>08:55</td><td>Encryption of local and shared files initiated.</td></tr>
+        <tr><td>09:00</td><td>SIEM detects unusual mass file changes and registry edits.</td></tr>
+        <tr><td>09:05</td><td>Incident Response activated, endpoint isolated.</td></tr>
+        <tr><td>09:15</td><td>Malware eradicated, system rebuilt from golden images.</td></tr>
+        <tr><td>09:45</td><td>Data restored from verified backups, post-incident monitoring started.</td></tr>
+    </table>
+</section>
+
+<section id="attack">
+    <h2>3. Attack Simulation Steps</h2>
+    <img src="https://cdn-icons-png.flaticon.com/512/4144/4144723.png" alt="Attack" class="icon">
+    <ul>
+        <li><strong>Initial Access:</strong> Phishing email exploiting a known CVE.</li>
+        <li><strong>Execution:</strong> JavaScript loader retrieves ransomware binary.</li>
+        <li><strong>Persistence:</strong> Registry run keys altered for auto-start.</li>
+        <li><strong>Defense Evasion:</strong> Shadow copy deletion to prevent rollback.</li>
+        <li><strong>Impact:</strong> AES encryption applied; files appended with <code>.blackbyte</code>.</li>
+    </ul>
+</section>
+
+<section id="detection">
+    <h2>4. Detection Methods</h2>
+    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Detection" class="icon">
+    <ul>
+        <li>SIEM flagged mass file modifications.</li>
+        <li>EDR detected suspicious registry changes.</li>
+        <li>Network logs identified outbound traffic to known C2 IPs.</li>
+        <li>Integrity monitoring caught unauthorized encryption operations.</li>
+    </ul>
+</section>
+
+<section id="ioc">
+    <h2>5. Indicators of Compromise (IOCs)</h2>
+    <img src="https://cdn-icons-png.flaticon.com/512/2303/2303935.png" alt="IOC" class="icon">
+    <ul>
+        <li>File Extension: <code>.blackbyte</code></li>
+        <li>Registry Key: <code>HKCU\Software\Microsoft\Windows\CurrentVersion\Run</code></li>
+        <li>Known C2 IP: <code>185.93.2.77</code></li>
+        <li>Domain: <code>blackbyte-encrypt[.]com</code></li>
+        <li>Hashes:
+            <ul>
+                <li>Payload: <code>a5b2f4f77d3b4a7afbbf2c0a621b12345fae88e82c3ac53a2b39d1f84d0dfc8b</code></li>
+                <li>Loader: <code>d1e3c4f77d3b4a7afbbf2c0a621b56789aae44e92c4bc51a3a22c3d84d1aefab</code></li>
+            </ul>
+        </li>
+        <li>Files: <code>encryptor.exe</code>, <code>payload.js</code></li>
+    </ul>
+</section>
+
+<section id="response">
+    <h2>6. Response Actions</h2>
+
+    <h3>Containment</h3>
+    <ul>
+        <li>Isolated infected endpoints via SOAR segmentation.</li>
+        <li>Disabled compromised accounts; reset all credentials.</li>
+        <li>Blocked malicious IPs/domains at firewall and DNS filter.</li>
+    </ul>
+
+    <h3>Eradication & Recovery</h3>
+    <ul>
+        <li>Deleted malicious files, registry edits, and scheduled tasks.</li>
+        <li>Rebuilt systems from clean golden images.</li>
+        <li>Restored verified backups with SHA-256 integrity checks.</li>
+        <li>Staggered reintroduction of systems under active monitoring.</li>
+    </ul>
+
+    <h3>Post-Incident Review</h3>
+    <ul>
+        <li>Root cause: lack of early detection on obfuscated JavaScript loader.</li>
+        <li>Policy updates: new SIEM rules for JS patterns and mass-write alerts.</li>
+        <li>Shared anonymized IOCs with CERT and law enforcement.</li>
+        <li>Conducted IR tabletop exercise for continuous improvement.</li>
+    </ul>
+</section>
+
+<section id="summary">
+    <h2>7. Executive Summary</h2>
+    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135783.png" alt="Summary" class="icon">
+    <p>
+        This simulation provided a controlled yet realistic environment to assess the 
+        organization's preparedness against a modern ransomware threat. The exercise validated 
+        the IR team's ability to detect, contain, and recover from an attack within a short 
+        timeframe.
+    </p>
+    <p>
+        Key achievements include:
+    </p>
+    <ul>
+        <li>Reduced mean time to detect (MTTD) to under 15 minutes.</li>
+        <li>Demonstrated effective use of SIEM and EDR for rapid triage.</li>
+        <li>Validated backup restoration strategy without data loss.</li>
+        <li>Established enhanced detection rules for early-stage infection attempts.</li>
+    </ul>
+</section>
+
+<footer>
+    &copy; 2025 Cybersecurity Incident Simulation | BlackByte Ransomware
+</footer>
+
+</body>
+</html>
