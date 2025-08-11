@@ -1,0 +1,85 @@
+Security Audit Report – Internee.pk 
+
+ 
+
+Scope 
+
+This penetration test was conducted on the Internee.pk platform to evaluate the security of critical areas including login pages, user profiles, and APIs. The assessment focused on detecting SQL Injection (SQLi), Cross-Site Scripting (XSS), and Cross-Site Request Forgery (CSRF) vulnerabilities. 
+
+ 
+
+Methodology 
+
+Testing was performed using OWASP ZAP with both automated and manual techniques: 
+
+Automated Scanning: Active Scan on login endpoints (GET /sign-in, POST /sign-in/factor-one) and other captured routes. 
+
+Manual Fuzzing: SQLi and XSS payloads injected into login-related requests and cookies. 
+
+CSRF Testing: Login requests were replayed without cookies to verify CSRF token enforcement. 
+
+Security Headers Review: HTTP responses checked for headers like Strict-Transport-Security and X-Frame-Options. 
+
+ 
+
+Findings 
+
+1. SQL Injection 
+
+Tested: By fuzzing login and API parameters. 
+
+Result: No evidence of SQL Injection vulnerabilities detected. 
+
+ 
+
+2. Cross-Site Scripting (XSS) 
+
+Tested: By injecting script payloads into login and profile fields. 
+
+Result: No reflected or stored XSS vulnerabilities detected. 
+
+ 
+
+3. Cookies 
+
+Tested: By Active scanning of Dashboard 
+
+Result: Cookies without secure flag, No http flag 
+
+ 
+
+3. Cross-Site Request Forgery (CSRF) 
+
+Endpoint Tested: POST /sign-in/factor-one 
+
+Observation: Request was re-sent without cookies and still returned HTTP/1.1 200 OK. 
+
+Risk: Indicates missing or insufficient CSRF protection. 
+
+Impact: An attacker could trick a logged-in user into unknowingly executing authentication-related actions. 
+
+ 
+
+ 
+
+Recommendations 
+
+Implement CSRF Tokens: Validate unique tokens on all sensitive POST requests. 
+
+Set SameSite Cookies: Use SameSite=Strict or Lax to reduce CSRF risk. 
+
+Enforce Session Validation: Reject requests missing valid cookies/tokens. 
+
+Continue Regular Testing: Run monthly OWASP ZAP scans. 
+
+Maintain Secure Coding Practices: Ensure developers follow OWASP Top 10 guidelines. 
+
+ 
+
+Conclusion 
+
+The penetration test revealed no SQL Injection or XSS vulnerabilities, but identified a potential CSRF risk in the login flow (POST /sign-in/factor-one). 
+
+ Implementing CSRF protection measures is strongly recommended to enhance application security. 
+
+ 
